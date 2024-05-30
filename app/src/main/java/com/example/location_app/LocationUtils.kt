@@ -18,8 +18,8 @@ import com.google.android.gms.maps.model.LatLng
 import java.util.Locale
 
 class LocationUtils(
-    val context: Context,
-    viewModel: LocationViewModel
+    private val context: Context
+//    ,viewModel: LocationViewModel
 ) {
     private val _fusedLocationClient: FusedLocationProviderClient =
         LocationServices.getFusedLocationProviderClient(context)
@@ -27,10 +27,10 @@ class LocationUtils(
 
     fun reverseGeocodeLocation(location: LocationData): String {
         val geocoder = Geocoder(context, Locale.getDefault())
-        val Coordinates = LatLng(location.latitude, location.longitude)
+        val coordinates = LatLng(location.latitude, location.longitude)
         val addresses: MutableList<Address>? = geocoder.getFromLocation(
-            Coordinates.latitude,
-            Coordinates.longitude,
+            coordinates.latitude,
+            coordinates.longitude,
             1
         )
         return if(addresses?.isNotEmpty()==true){
@@ -90,12 +90,12 @@ class LocationUtils(
                 ) == PackageManager.PERMISSION_GRANTED
     }
 
-    fun hasInternetPermission(context: Context): Boolean {
-        return ContextCompat.checkSelfPermission(
-            context,
-            Manifest.permission.INTERNET
-        ) == PackageManager.PERMISSION_GRANTED
-    }
+//    fun hasInternetPermission(context: Context): Boolean {
+//        return ContextCompat.checkSelfPermission(
+//            context,
+//            Manifest.permission.INTERNET
+//        ) == PackageManager.PERMISSION_GRANTED
+//    }
 
 
 

@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
         viewModel: LocationViewModel
     ){
         val context = LocalContext.current
-        val locationUtils = LocationUtils(context,viewModel)
+        val locationUtils = LocationUtils(context)
         LocationDisplay(locationUtils = locationUtils, context = context, viewModel = viewModel )
     }
 
