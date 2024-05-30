@@ -12,17 +12,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.location_app.ui.theme.Location_AppTheme
@@ -86,7 +83,9 @@ class MainActivity : ComponentActivity() {
                     )
                             ||
                     ActivityCompat.shouldShowRequestPermissionRationale(
-                        context as MainActivity,
+                        context
+//                                as MainActivity
+                        ,
                         Manifest.permission.ACCESS_COARSE_LOCATION
                     )
 
@@ -116,7 +115,7 @@ class MainActivity : ComponentActivity() {
             if(location != null){
                 Text(text = "Latitude: ${location.latitude}")
                 Text(text = "Longitude: ${location.longitude}")
-                Text(text = "Address : ${address}")
+                Text(text = "Address : $address")
             }else {
                 Text(text = "Location Not Available")
             }
